@@ -20,8 +20,8 @@ const CartScreen = () => {
  const params = useParams();
  const productId = params.id;
 
- //  const qty = location.search ? Number(location.search.split('=')[1]) : 1;
- const qty = new URLSearchParams(location.search).get('qty');
+ const qty = location.search ? Number(location.search.split('=')[1]) : 1;
+ //  const qty = new URLSearchParams(location.search).get('qty');
 
  const dispatch = useDispatch();
 
@@ -39,7 +39,7 @@ const CartScreen = () => {
  };
 
  const checkoutHandler = () => {
-  navigate('/shipping');
+  navigate('/login?redirect=shipping');
  };
 
  return (

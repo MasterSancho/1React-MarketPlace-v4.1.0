@@ -4,6 +4,7 @@ import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { createOrder } from '../actions/orderActions';
 
 const PlaceOrderScreen = () => {
  const dispatch = useDispatch();
@@ -34,20 +35,19 @@ const PlaceOrderScreen = () => {
   if (success) {
    navigate(`/order/${order._id}`);
   }
-  // eslint-disable-next-line
  }, [navigate, success]);
 
  const placeOrderHandler = () => {
   dispatch();
-  // createOrder({
-  //  orderItems: cart.cartItems,
-  //  shippingAddress: cart.shippingAddress,
-  //  paymentMethod: cart.paymentMethod,
-  //  itemsPrice: cart.itemsPrice,
-  //  shippingPrice: cart.shippingPrice,
-  //  taxPrice: cart.taxPrice,
-  //  totalPrice: cart.totalPrice,
-  // })
+  createOrder({
+   orderItems: cart.cartItems,
+   shippingAddress: cart.shippingAddress,
+   paymentMethod: cart.paymentMethod,
+   itemsPrice: cart.itemsPrice,
+   shippingPrice: cart.shippingPrice,
+   taxPrice: cart.taxPrice,
+   totalPrice: cart.totalPrice,
+  });
  };
 
  return (
