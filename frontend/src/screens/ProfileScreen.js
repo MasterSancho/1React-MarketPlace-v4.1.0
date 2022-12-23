@@ -7,6 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
+import { FaTimes } from 'react-icons/fa';
 
 const ProfileScreen = () => {
  const [name, setName] = useState('');
@@ -127,18 +128,12 @@ const ProfileScreen = () => {
          <td>{order._id}</td>
          <td>{order.createdAt.substring(0, 10)}</td>
          <td>{order.totalPrice}</td>
-         <td>
-          {order.isPaid ? (
-           order.paidAt.substring(0, 10)
-          ) : (
-           <i className='fas fa-times' style={{ color: 'red' }}></i>
-          )}
-         </td>
+         <td>{order.isPaid ? order.paidAt.substring(0, 10) : <FaTimes />}</td>
          <td>
           {order.isDelivered ? (
            order.deliveredAt.substring(0, 10)
           ) : (
-           <i className='fas fa-times' style={{ color: 'red' }}></i>
+           <FaTimes style={{ color: 'red' }} />
           )}
          </td>
          <td>
